@@ -1,24 +1,24 @@
 {
-  "name": "myIPv4",
-  "version": "1.0.0",
-  "description": "Get your local IPv4",
+  "name": "my-ip",
+  "version": "1.1.0",
+  "description": "Get your IP",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js"
+    "test": "node index"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:AtuyL/myIPv4.git"
+    "url": "git@github.com:AtuyL/my-ip.git"
   },
   "keywords": [
     "util",
     "server",
     "ip",
-    "local"
+    "localhost"
   ],
   "author": "AtuyL",
   "license": "BSD-2-Clause",
   "bugs": {
-    "url": "https://github.com/AtuyL/myIPv4/issues"
+    "url": "https://github.com/AtuyL/my-ip/issues"
   }
 }

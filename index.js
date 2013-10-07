@@ -1,20 +1,40 @@
-myIPv4 = (function(){
-  var os = require('os');
+var os = require('os');
+getMyIP = function(version,internal){
+  version = version || 'IPv4';
+  internal = internal || false;
   var interfaces = os.networkInterfaces();
   for(var key in interfaces){
     var addresses = interfaces[key];
     for(var i = 0; i < addresses.length; i++){
       address = addresses[i];
-      if(!address.internal && address.family === 'IPv4'){
+      if(address.internal === internal && address.family === version){
         return address.address;
       };
     };
   };
   return 'localhost'
-})();
+};
 
 if(!module.parent){
-  console.log(myIPv4);
+  version = 'IPv4';
+  internal = false;
+  var argv = process.argv;
+  var length = argv.length;
+  if(length >= 3){
+    for(var i = 2; i < length; i++){
+      switch(argv[i]){
+        case '--version6':
+        case '-v6':
+          version = 'IPv6'
+          break;
+        case '--internal':
+        case '-i':
+          internal = true;
+          break;
+      };
+    };
+  };
+  console.log(getMyIP(version,internal));
 }else{
-  module.exports = myIPv4;
+  module.exports = getMyIP;
 };
