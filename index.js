@@ -1,12 +1,12 @@
 var os = require('os');
-getMyIP = function(version,internal){
+function getMyIP(version,internal){
   version = version || 'IPv4';
   internal = internal || false;
   var interfaces = os.networkInterfaces();
   for(var key in interfaces){
     var addresses = interfaces[key];
     for(var i = 0; i < addresses.length; i++){
-      address = addresses[i];
+      var address = addresses[i];
       if(address.internal === internal && address.family === version){
         return address.address;
       };
